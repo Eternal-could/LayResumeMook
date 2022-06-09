@@ -4,6 +4,10 @@
 const path = require('path');
 const {app, BrowserWindow} = require('electron');
 
+const isDev = () => {
+  return process.env.NODE_ENV === 'development';
+}
+
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 1200,
@@ -17,8 +21,14 @@ const createWindow = () => {
       contextIsolation: false
     },
   });
-  mainWindow.loadFile('index.html');
+  if (isDev()) {
+    // 在开发环境下，我们加载的是运行在 7001 端口的 React
+    mainWindow.loadURL(`http://127.0.0.1:7001`);
+  } else {
+    mainWindow.loadURL(`file://${path.join(__dirname, '../dist/index.html')}`);
+  }
 };
+
 app.whenReady().then(() => {
   createWindow();
   app.on('activate', function () {

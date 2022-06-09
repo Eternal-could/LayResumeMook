@@ -4,8 +4,9 @@
   "description": "一款轻巧的简历平台桌面应用。",
   "main": "./app/main/electron.ts",
   "scripts": {
-    "start:main": "electron ./app/main/electron.ts",
-    "install:electron": "ELECTRON_MIRROR=https://cdn.npm.taobao.org/dist/electron/ npm install electron"
+    "start:main": "webpack --config ./webpack/webpack.main.dev.js && electron ./dist/electron.js",
+    "install:electron": "ELECTRON_MIRROR=https://cdn.npm.taobao.org/dist/electron/ npm install electron",
+    "start:render": "webpack-dev-server --config ./webpack/webpack.render.dev.js"
   },
   "author": "LeiYJ",
   "license": "MIT",
