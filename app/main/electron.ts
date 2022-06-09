@@ -7,7 +7,7 @@ const {app, BrowserWindow} = require('electron');
 const isDev = () => {
   return process.env.NODE_ENV === 'development';
 }
-
+process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 1200,
