@@ -5,6 +5,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
+import Title from './title';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Route path="/">
           <div>可视化简历平台</div>
           <div>这是 Electron + React 项目</div>
+          <Title/>
         </Route>
       </Switch>
     </Router>
