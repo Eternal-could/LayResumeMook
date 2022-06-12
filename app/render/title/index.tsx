@@ -1,4 +1,5 @@
 import * as React from 'react';
+import lessStyle from './index.less'
 
 interface IProps {
   /**
@@ -13,7 +14,9 @@ interface IProps {
 
 const Title = ({text, styles}: IProps) => {
   return (
-    <div style={styles}>{text}</div>
+    <div style={styles} className={lessStyle.title}>
+      {text}
+    </div>
   )
 }
 
