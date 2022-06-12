@@ -14,7 +14,7 @@ const App = () => {
         <Route path="/">
           <div>可视化简历平台</div>
           <div>这是 Electron + React 项目</div>
-          <Title/>
+          <Title text={'你好啊'}/>
         </Route>
       </Switch>
     </Router>
