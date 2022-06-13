@@ -16,6 +16,7 @@ module.exports = {
     // 设置别名
     alias: {
       '@src': path.join(__dirname, '../', 'app/render'),
+      '@assets': path.join(__dirname, '../', 'assets/'),
     }
   },
   module: {
