@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.less'
+import { shell } from 'electron'
 import { useHistory } from 'react-router'
 import Logo from '../../../../assets/logo.png';
 
@@ -8,10 +9,9 @@ const Root = () => {
   const history = useHistory()
   const onRouterToLink = (text: string) => {
     if (text === '简历') {
-      console.log('跳转到简历页面')
       history.push('/resume')
     } else {
-      console.log('进入到 github')
+      shell.openExternal('https://github.com/Eternal-could/LayResumeMook')
     }
   }
   return (
