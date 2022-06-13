@@ -2,7 +2,7 @@ import React from 'react';
 import './index.less'
 import { shell } from 'electron'
 import { useHistory } from 'react-router'
-import Logo from '../../../../assets/logo.png';
+import Logo from '@assets/logo.png';
 
 const Root = () => {
   // 通过 history.push 进行跳转
