@@ -4,15 +4,20 @@ import {shell} from 'electron';
 import {useHistory} from 'react-router';
 import Logo from '@assets/logo.png';
 import {ROUTER_ENTRY, ROUTER_KEY} from '@common/constants/router';
+import { isHttpOrHttpsUrl } from '@common/utils/router';
 
 const Root = () => {
   // 通过 history.push 进行跳转
   const history = useHistory();
   const onRouterToLink = (router: TSRouter.Item) => {
-    if (router.text === '简历') {
-      history.push(router.url);
-    } else {
+    if (isHttpOrHttpsUrl(router.url)) {
       shell.openExternal(router.url);
+    } else {
+      if (router.key !== ROUTER_KEY.resume) {
+        history.push(router.url);
+      } else {
+        history.push(router.url);
+      }
     }
   };
   return (
