@@ -1,19 +1,20 @@
 import React from 'react';
-import './index.less'
-import { shell } from 'electron'
-import { useHistory } from 'react-router'
+import './index.less';
+import {shell} from 'electron';
+import {useHistory} from 'react-router';
 import Logo from '@assets/logo.png';
+import {ROUTER_ENTRY, ROUTER_KEY} from '@common/constants/router';
 
 const Root = () => {
   // 通过 history.push 进行跳转
-  const history = useHistory()
-  const onRouterToLink = (text: string) => {
-    if (text === '简历') {
-      history.push('/resume')
+  const history = useHistory();
+  const onRouterToLink = (router: TSRouter.Item) => {
+    if (router.text === '简历') {
+      history.push(router.url);
     } else {
-      shell.openExternal('https://github.com/Eternal-could/LayResumeMook')
+      shell.openExternal(router.url);
     }
-  }
+  };
   return (
     <div styleName="root">
       <div styleName="container">
@@ -21,15 +22,18 @@ const Root = () => {
         <div styleName="title">LayResumeMook</div>
         <div styleName="tips">一个简单的模板简历制作平台, 更容易实现一个完整的简历 ~</div>
         <div styleName="action">
+
           {
-            ['介绍', '简历', '源码'].map( (text, index) => {
+            ROUTER_ENTRY.map((router: TSRouter.Item) => {
               return (
                 <div
-                  key={index}
+                  key={router.key}
                   styleName="item"
-                  onClick={()=>{onRouterToLink(text)}}
-                >{text}</div>
-              )
+                  onClick={() => {
+                    onRouterToLink(router);
+                  }}
+                >{router.text}</div>
+              );
             })
           }
         </div>
@@ -42,7 +46,7 @@ const Root = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Root
+export default Root;
