@@ -27,22 +27,22 @@ const Root = () => {
     return state.globalModel.appName
   })
 
-  useEffect(() => {
-    setTimeout(() => {
-      console.log('3s 后修改');
-      dispatch({
-        type: 'globalModel/setStore',
-        payload: {
-          key: 'appName',
-          values: 'LayResumeMook',
-        }
-      })
-    }, 3000)
-  },[])
-
-  useEffect(() => {
-    console.log('appName = ', appName);
-  }, [appName]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     console.log('3s 后修改');
+  //     dispatch({
+  //       type: 'globalModel/setStore',
+  //       payload: {
+  //         key: 'appName',
+  //         values: 'LayResumeMook',
+  //       }
+  //     })
+  //   }, 3000)
+  // },[])
+  //
+  // useEffect(() => {
+  //   console.log('appName = ', appName);
+  // }, [appName]);
 
   return (
     <div styleName="root">
